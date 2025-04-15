@@ -8,28 +8,31 @@ const Container = styled.div`
   background: #f3f3e9;
 `;
 
-// const Header = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-  
-//   padding: 2rem;
-// `;
-
 const WelcomeText = styled.h1`
-  font-size: 2.5rem;
+  font-size: 4rem;
   margin-bottom: 1rem;
   color: #333;
   text-align: center;
   span {
     color: #c2185b;
+    font-weight: 300;
+
+    &:last-child {
+      font-weight: 700;
+    }
   }
+
 `;
 
 const RulesText = styled.p`
-  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: start;
   color: #666;
   margin-bottom: 2rem;
+  background: #D9D9D94D;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
 `;
 
 const RulesLink = styled.button`
@@ -40,6 +43,7 @@ const RulesLink = styled.button`
   cursor: pointer;
   padding: 0;
   font-size: inherit;
+  margin-top: 0.5rem;
 `;
 
 const Form = styled.div`
@@ -251,10 +255,11 @@ export function Welcome() {
       <Header />
 
       <WelcomeText>
-        Welcome to <span>QUIZMania</span>
+        Welcome to <span>QUIZ</span><span>Mania</span>
       </WelcomeText>
       <RulesText>
-        Please read all the rules about this quiz before you start.{" "}
+        Please read all the rules about this quiz before you start.
+        <br/>
         <RulesLink onClick={() => setShowRules(true)}>Quiz rules</RulesLink>
       </RulesText>
 
