@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { useQuiz } from '../context/QuizContext';
-import styled from 'styled-components';
+import React, { useEffect } from "react";
+import { useQuiz } from "../context/QuizContext";
+import styled from "styled-components";
 
 const Container = styled.div`
   min-height: 100vh;
@@ -19,13 +19,13 @@ const Logo = styled.h1`
   font-size: 1.5rem;
   color: #000;
   span {
-    color: #C2185B;
+    color: #c2185b;
   }
 `;
 
 const ExitButton = styled.button`
-  background: #FFF1F5;
-  color: #C2185B;
+  background: #fff1f5;
+  color: #c2185b;
   border: none;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
@@ -33,7 +33,7 @@ const ExitButton = styled.button`
   font-size: 0.9rem;
 
   &:hover {
-    background: #FFE4EC;
+    background: #ffe4ec;
   }
 `;
 
@@ -46,24 +46,24 @@ const ProgressText = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
-  
+
   span {
-    color: #C2185B;
+    color: #c2185b;
     font-weight: bold;
   }
 `;
 
 const ProgressBar = styled.div`
   height: 4px;
-  background: #F3E5F5;
+  background: #f3e5f5;
   border-radius: 2px;
   overflow: hidden;
 `;
 
 const ProgressFill = styled.div`
   height: 100%;
-  background: #C2185B;
-  width: ${props => props.progress}%;
+  background: #c2185b;
+  width: ${(props) => props.progress}%;
   transition: width 0.3s ease;
 `;
 
@@ -100,17 +100,17 @@ const OptionButton = styled.button`
   width: 100%;
   padding: 1.5rem;
   text-align: left;
-  border: 2px solid ${props => props.selected ? '#C2185B' : '#ddd'};
+  border: 2px solid ${(props) => (props.selected ? "#C2185B" : "#ddd")};
   border-radius: 8px;
-  background: ${props => props.selected ? '#FFF1F5' : '#fff'};
+  background: ${(props) => (props.selected ? "#FFF1F5" : "#fff")};
   cursor: pointer;
   font-size: 1rem;
   color: #333;
   transition: all 0.2s ease;
 
   &:hover {
-    border-color: #C2185B;
-    background: ${props => props.selected ? '#FFF1F5' : '#FFF9FB'};
+    border-color: #c2185b;
+    background: ${(props) => (props.selected ? "#FFF1F5" : "#FFF9FB")};
   }
 
   &:disabled {
@@ -126,7 +126,7 @@ const ButtonContainer = styled.div`
 `;
 
 const NextButton = styled.button`
-  background: #C2185B;
+  background: #c2185b;
   color: white;
   padding: 0.8rem 2rem;
   border: none;
@@ -135,7 +135,7 @@ const NextButton = styled.button`
   font-size: 1rem;
 
   &:hover {
-    background: #A01346;
+    background: #a01346;
   }
 
   &:disabled {
@@ -158,8 +158,10 @@ const SkipButton = styled.button`
 `;
 
 export function Quiz() {
-  const { state, answerQuestion, nextQuestion, resetQuiz } = useQuiz();
-  const currentQuestion = state.selectedCategory?.questions[state.currentQuestionIndex];
+  const { state, answerQuestion, nextQuestion, skipQuestion, resetQuiz } =
+    useQuiz();
+  const currentQuestion =
+    state.selectedCategory?.questions[state.currentQuestionIndex];
   const [selectedAnswer, setSelectedAnswer] = React.useState(null);
 
   useEffect(() => {
@@ -169,6 +171,7 @@ export function Quiz() {
   if (!currentQuestion) return null;
 
   const handleAnswer = (answer) => {
+    console.log("answer", answer);
     setSelectedAnswer(answer);
     answerQuestion(answer);
   };
@@ -177,7 +180,14 @@ export function Quiz() {
     nextQuestion();
   };
 
-  const progress = ((state.currentQuestionIndex + 1) / state.selectedCategory.questions.length) * 100;
+  const handleSkip = () => {
+    skipQuestion();
+  };
+
+  const progress =
+    ((state.currentQuestionIndex + 1) /
+      state.selectedCategory.questions.length) *
+    100;
 
   return (
     <Container>
@@ -190,7 +200,10 @@ export function Quiz() {
 
       <Progress>
         <ProgressText>
-          <span>{state.currentQuestionIndex + 1}/{state.selectedCategory.questions.length}</span>
+          <span>
+            {state.currentQuestionIndex + 1}/
+            {state.selectedCategory.questions.length}
+          </span>
           <Timer>{state.timer}:00</Timer>
         </ProgressText>
         <ProgressBar>
@@ -217,9 +230,7 @@ export function Quiz() {
         </OptionsContainer>
 
         <ButtonContainer>
-          <SkipButton onClick={handleNext}>
-            Skip this question
-          </SkipButton>
+          <SkipButton onClick={handleSkip}>Skip this question</SkipButton>
           <NextButton
             onClick={handleNext}
             disabled={!selectedAnswer && state.timer > 0}
@@ -230,4 +241,4 @@ export function Quiz() {
       </QuestionContainer>
     </Container>
   );
-} 
+}

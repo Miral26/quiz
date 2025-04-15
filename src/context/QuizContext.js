@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useReducer, useEffect } from "react";
-import { QuizState } from "../types/quiz";
 
 const initialState = {
   categories: [
@@ -267,6 +266,8 @@ const initialState = {
 };
 
 function quizReducer(state, action) {
+  const nextIndex = state.currentQuestionIndex + 1;
+  const isComplete = !state.selectedCategory?.questions[nextIndex];
   switch (action.type) {
     case "SELECT_CATEGORY":
       return {
@@ -281,8 +282,8 @@ function quizReducer(state, action) {
     case "ANSWER_QUESTION":
       const currentQuestion =
         state.selectedCategory?.questions[state.currentQuestionIndex];
-      const isCorrect = currentQuestion?.correctAnswer === action.payload;
-
+      const givenAnswer = action.payload.charAt(0);
+      const isCorrect = currentQuestion?.correctAnswer === givenAnswer;
       return {
         ...state,
         score: isCorrect ? state.score + 1 : state.score,
@@ -290,11 +291,16 @@ function quizReducer(state, action) {
           state.unansweredQuestions + (action.payload ? 0 : 1),
       };
     case "NEXT_QUESTION":
-      const nextIndex = state.currentQuestionIndex + 1;
-      const isComplete = !state.selectedCategory?.questions[nextIndex];
-
       return {
         ...state,
+        currentQuestionIndex: nextIndex,
+        timer: state.selectedCategory?.questions[nextIndex]?.timeLimit || 10,
+        isQuizComplete: isComplete,
+      };
+    case "SKIP_QUESTION":
+      return {
+        ...state,
+        unansweredQuestions: state.unansweredQuestions + 1,
         currentQuestionIndex: nextIndex,
         timer: state.selectedCategory?.questions[nextIndex]?.timeLimit || 10,
         isQuizComplete: isComplete,
@@ -344,6 +350,7 @@ export function QuizProvider({ children }) {
       dispatch({ type: "ANSWER_QUESTION", payload: answer }),
     nextQuestion: () => dispatch({ type: "NEXT_QUESTION" }),
     resetQuiz: () => dispatch({ type: "RESET_QUIZ" }),
+    skipQuestion: () => dispatch({ type: "SKIP_QUESTION" }),
   };
 
   return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;
