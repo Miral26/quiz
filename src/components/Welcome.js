@@ -16,7 +16,6 @@ const WelcomeText = styled.h1`
       font-weight: 700;
     }
   }
-
 `;
 
 const RulesText = styled.p`
@@ -25,7 +24,7 @@ const RulesText = styled.p`
   text-align: start;
   color: #666;
   margin-bottom: 2rem;
-  background: #D9D9D94D;
+  background: #d9d9d94d;
   padding: 0.75rem 1rem;
   border-radius: 8px;
 `;
@@ -40,7 +39,6 @@ const RulesLink = styled.button`
   font-size: inherit;
   margin-top: 0.5rem;
   font-family: "Outfit", sans-serif;
-
 `;
 
 const Form = styled.div`
@@ -84,7 +82,7 @@ const CategoryOption = styled.div`
   cursor: pointer;
   background: ${(props) => (props.selected ? "#FFF1F5" : "#fff")};
   position: relative;
-  background: #F3F3E9;
+  background: #f3f3e9;
 
   &:hover {
     border-color: #c2185b;
@@ -92,7 +90,6 @@ const CategoryOption = styled.div`
 `;
 
 const RadioInput = styled.input`
-
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -132,7 +129,7 @@ const CategoryLabel = styled.label`
 
 const StartButton = styled.button`
   background: #c2185b;
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 8px 35px;
   border: none;
   border-radius: 4px;
@@ -148,7 +145,7 @@ const StartButton = styled.button`
   }
 
   &:disabled {
-    background: #B92B5D;
+    background: #b92b5d;
     opacity: 0.4;
     cursor: not-allowed;
   }
@@ -169,7 +166,7 @@ const Modal = styled.div`
 
 const ModalContent = styled.div`
   background: white;
-  padding: 0rem 2rem 2rem 2rem;
+  padding: 0rem 2rem 0rem 2rem;
   border-radius: 8px;
   max-width: 600px;
   width: 90%;
@@ -182,7 +179,7 @@ const CloseButton = styled.button`
   position: absolute;
   right: 1rem;
   top: 1rem;
-  background: #E6E6E6;
+  background: #e6e6e6;
   border: none;
   border-radius: 50%;
   font-size: 1.5rem;
@@ -190,7 +187,6 @@ const CloseButton = styled.button`
   color: #000000;
   font-weight: 700;
   font-family: "Outfit", sans-serif;
-
 `;
 
 const ModalTitle = styled.h2`
@@ -201,12 +197,12 @@ const ModalTitle = styled.h2`
 
 const RulesSection = styled.div`
   border-radius: 4px;
-  `;
-  
-  const RulesTitle = styled.h3`
+`;
+
+const RulesTitle = styled.h3`
   color: #333;
   margin-bottom: 1rem;
-  background: #F3F3E9;
+  background: #f3f3e9;
   padding: 0.75rem;
   border-radius: 4px;
 `;
@@ -214,7 +210,6 @@ const RulesSection = styled.div`
 const RulesList = styled.ul`
   list-style: none;
   padding: 0px 5px 8px 0;
-  
 
   li {
     font-weight: 400;
@@ -256,14 +251,13 @@ export function Welcome() {
 
   return (
     <>
-      
-
       <WelcomeText>
-        Welcome to <span>QUIZ</span><span>Mania</span>
+        Welcome to <span>QUIZ</span>
+        <span>Mania</span>
       </WelcomeText>
       <RulesText>
         Please read all the rules about this quiz before you start.
-        <br/>
+        <br />
         <RulesLink onClick={() => setShowRules(true)}>Quiz rules</RulesLink>
       </RulesText>
 
@@ -353,10 +347,12 @@ export function Welcome() {
                 <li>
                   Based on your performance, you will receive a personalized
                   message:
+                  <RulesList>
+                    <li>Great job!: If you score above 80%.</li>
+                    <li>Well done!: If you score between 60% and 80%.</li>
+                    <li>Keep practicing!: If you score below 60%.</li>
+                  </RulesList>
                 </li>
-                <li>Great job!: If you score above 80%.</li>
-                <li>Well done!: If you score between 60% and 80%.</li>
-                <li>Keep practicing!: If you score below 60%.</li>
               </RulesList>
             </RulesSection>
           </ModalContent>
