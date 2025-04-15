@@ -3,19 +3,31 @@ import { useQuiz } from "../context/QuizContext";
 import styled from "styled-components";
 
 const WelcomeText = styled.h1`
-  font-size: 2.5rem;
+  font-weight: 500;
+  font-size: 4rem;
   margin-bottom: 1rem;
   color: #333;
   text-align: center;
   span {
     color: #c2185b;
+    font-weight: 300;
+
+    &:last-child {
+      font-weight: 700;
+    }
   }
+
 `;
 
 const RulesText = styled.p`
-  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: start;
   color: #666;
   margin-bottom: 2rem;
+  background: #D9D9D94D;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
 `;
 
 const RulesLink = styled.button`
@@ -26,6 +38,9 @@ const RulesLink = styled.button`
   cursor: pointer;
   padding: 0;
   font-size: inherit;
+  margin-top: 0.5rem;
+  font-family: "Outfit", sans-serif;
+
 `;
 
 const Form = styled.div`
@@ -49,6 +64,7 @@ const Input = styled.input`
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1rem;
+  background: none;
 `;
 
 const CategoryGrid = styled.div`
@@ -68,6 +84,7 @@ const CategoryOption = styled.div`
   cursor: pointer;
   background: ${(props) => (props.selected ? "#FFF1F5" : "#fff")};
   position: relative;
+  background: #F3F3E9;
 
   &:hover {
     border-color: #c2185b;
@@ -75,6 +92,7 @@ const CategoryOption = styled.div`
 `;
 
 const RadioInput = styled.input`
+
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -114,23 +132,24 @@ const CategoryLabel = styled.label`
 
 const StartButton = styled.button`
   background: #c2185b;
-  color: white;
-  padding: 0.8rem 2rem;
+  color: #FFFFFF;
+  padding: 8px 35px;
   border: none;
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 1.5rem;
   cursor: pointer;
   width: 100%;
   max-width: 200px;
-  margin: 0 auto;
   display: block;
+  font-family: "Outfit", sans-serif;
 
   &:hover {
     background: #a01346;
   }
 
   &:disabled {
-    background: #ddd;
+    background: #B92B5D;
+    opacity: 0.4;
     cursor: not-allowed;
   }
 `;
@@ -170,6 +189,8 @@ const CloseButton = styled.button`
   cursor: pointer;
   color: #000000;
   font-weight: 700;
+  font-family: "Outfit", sans-serif;
+
 `;
 
 const ModalTitle = styled.h2`
@@ -193,6 +214,7 @@ const RulesSection = styled.div`
 const RulesList = styled.ul`
   list-style: none;
   padding: 0px 5px 8px 0;
+  
 
   li {
     font-weight: 400;
@@ -237,10 +259,11 @@ export function Welcome() {
       
 
       <WelcomeText>
-        Welcome to <span>QUIZMania</span>
+        Welcome to <span>QUIZ</span><span>Mania</span>
       </WelcomeText>
       <RulesText>
-        Please read all the rules about this quiz before you start.{" "}
+        Please read all the rules about this quiz before you start.
+        <br/>
         <RulesLink onClick={() => setShowRules(true)}>Quiz rules</RulesLink>
       </RulesText>
 

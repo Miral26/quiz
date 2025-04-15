@@ -66,6 +66,8 @@ const OptionButton = styled.button`
   font-size: 1rem;
   color: #333;
   transition: all 0.2s ease;
+  font-family: "Outfit", sans-serif;
+
 
   &:hover {
     border-color: #c2185b;
@@ -92,6 +94,8 @@ const NextButton = styled.button`
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
+  font-family: "Outfit", sans-serif;
+
 
   &:hover {
     background: #a01346;
@@ -110,6 +114,8 @@ const SkipButton = styled.button`
   cursor: pointer;
   font-size: 1rem;
   text-decoration: underline;
+  font-family: "Outfit", sans-serif;
+
 
   &:hover {
     color: #333;

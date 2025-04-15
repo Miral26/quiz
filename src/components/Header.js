@@ -46,6 +46,7 @@ export function Header() {
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.9rem;
+  font-family: "Outfit", sans-serif;
 
     &:hover {
       background: #ffe4ec;
