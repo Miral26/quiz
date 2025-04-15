@@ -14,13 +14,20 @@ const ProgressText = styled.div`
   margin-bottom: 0.5rem;
 
   span {
+    font-size: 2rem;
     color: #c2185b;
     font-weight: bold;
+
+    &:last-child {
+      font-size: 1.5rem;
+      color: #000000;
+      margin-left: 0.3rem;
+    }
   }
 `;
 
 const ProgressBar = styled.div`
-  height: 4px;
+  height: 12px;
   background: #f3e5f5;
   border-radius: 2px;
   overflow: hidden;
@@ -34,6 +41,9 @@ const ProgressFill = styled.div`
 `;
 
 const Timer = styled.div`
+  background: #E9E8E3;
+  padding: 8px 16px;
+  border-radius: 4px;
   font-size: 1rem;
   color: #666;
 `;
@@ -158,11 +168,15 @@ export function Quiz() {
 
       <Progress>
         <ProgressText>
+          <div>
           <span>
             {state.currentQuestionIndex + 1}/
-            {state.selectedCategory.questions.length}
           </span>
-          <Timer>{state.timer}:00</Timer>
+          <span>
+            {state.selectedCategory.questions.length}
+            </span>
+            </div>
+          <Timer>00:{state.timer}</Timer>
         </ProgressText>
         <ProgressBar>
           <ProgressFill progress={progress} />

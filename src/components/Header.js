@@ -14,7 +14,6 @@ export function Header() {
     padding: 30px 8%;
   `;
 
-  
   const UserName = styled.div`
     display: flex;
     align-items: center;
@@ -39,14 +38,14 @@ export function Header() {
   `;
 
   const ExitButton = styled.button`
-    background: #fff1f5;
-    color: #c2185b;
-    border: none;
-    padding: 0.5rem 1.5rem;
+    background: #f3f3e9;
+    color: #b92b5d;
+    border: 1px solid #b92b5d;
+    padding: 8px 50px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.9rem;
-  font-family: "Outfit", sans-serif;
+    font-size: 20px;
+    font-family: "Outfit", sans-serif;
 
     &:hover {
       background: #ffe4ec;
@@ -61,9 +60,7 @@ export function Header() {
           <UserText>{state.userName}</UserText>
         </UserName>
       )}
-      {!state.isQuizComplete && state.selectedCategory && (
-        <ExitButton onClick={resetQuiz}>Exit Quiz</ExitButton>
-      )}
+      {!state.isQuizComplete && state.selectedCategory && <ExitButton onClick={resetQuiz}>Exit Quiz</ExitButton>}
     </HeaderContainer>
   );
 }
