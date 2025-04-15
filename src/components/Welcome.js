@@ -129,7 +129,7 @@ const CategoryLabel = styled.label`
   &:after {
     content: "";
     position: absolute;
-    left: 5px;
+    left: 7px;
     top: 50%;
     transform: translateY(-50%);
     width: 10px;
