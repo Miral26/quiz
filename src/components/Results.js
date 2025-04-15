@@ -182,10 +182,6 @@ const RetakeButton = styled.button`
   border-radius: 8px;
   cursor: pointer;
   font-size: 1.25rem;
-
-  &:hover {
-    background: #a01346;
-  }
 `;
 
 export function Results() {

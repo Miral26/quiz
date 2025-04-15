@@ -164,7 +164,7 @@ const Modal = styled.div`
 
 const ModalContent = styled.div`
   background: white;
-  padding: 2rem;
+  padding: 0rem 2rem 2rem 2rem;
   border-radius: 8px;
   max-width: 600px;
   width: 90%;
@@ -177,30 +177,39 @@ const CloseButton = styled.button`
   position: absolute;
   right: 1rem;
   top: 1rem;
-  background: none;
+  background: #E6E6E6;
   border: none;
+  border-radius: 50%;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #666;
+  color: #000000;
+  font-weight: 700;
+`;
+
+const ModalTitle = styled.h2`
+  font-size: 2rem;
+  font-weight: 700;
+  color: #373052;
 `;
 
 const RulesSection = styled.div`
-  margin-bottom: 2rem;
-  background: #f9f9f9;
-  padding: 1rem;
   border-radius: 4px;
-`;
-
-const RulesTitle = styled.h3`
+  `;
+  
+  const RulesTitle = styled.h3`
   color: #333;
   margin-bottom: 1rem;
+  background: #F3F3E9;
+  padding: 0.75rem;
+  border-radius: 4px;
 `;
 
 const RulesList = styled.ul`
   list-style: none;
-  padding: 0;
+  padding: 0px 5px 8px 0;
 
   li {
+    font-weight: 400;
     margin-bottom: 0.5rem;
     padding-left: 1.5rem;
     position: relative;
@@ -208,8 +217,8 @@ const RulesList = styled.ul`
     &:before {
       content: "•";
       position: absolute;
-      left: 0;
-      color: #c2185b;
+      left: 7px;
+      color: #000000;
     }
   }
 `;
@@ -298,7 +307,7 @@ export function Welcome() {
         <Modal>
           <ModalContent>
             <CloseButton onClick={handleCloseRules}>&times;</CloseButton>
-            <h2>Quiz rules</h2>
+            <ModalTitle>Quiz rules</ModalTitle>
 
             <RulesSection>
               <RulesTitle>10-Second Timer</RulesTitle>
