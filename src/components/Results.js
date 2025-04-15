@@ -182,6 +182,7 @@ const RetakeButton = styled.button`
   border-radius: 8px;
   cursor: pointer;
   font-size: 1.25rem;
+  font-family: "Outfit", sans-serif;
 `;
 
 export function Results() {

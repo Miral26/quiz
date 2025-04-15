@@ -30,6 +30,7 @@ const CategoryCard = styled.button`
   padding: 1.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-family: "Outfit", sans-serif;
   
   &:hover {
     transform: translateY(-2px);
