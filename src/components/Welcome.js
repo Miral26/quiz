@@ -1,26 +1,19 @@
 import React, { useState } from "react";
 import { useQuiz } from "../context/QuizContext";
 import styled from "styled-components";
+import LogoSvg from "../lib/svg/LogoSvg";
 
 const Container = styled.div`
   min-height: 100vh;
-  background: #fff;
-  padding: 2rem;
+  background: #F3F3E9;
 `;
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 4rem;
-`;
-
-const Logo = styled.h1`
-  font-size: 1.5rem;
-  color: #000;
-  span {
-    color: #c2185b;
-  }
+  border-bottom: 1px solid #D9D9D9;
+  padding: 2rem;
 `;
 
 const UserName = styled.div`
@@ -253,10 +246,7 @@ export function Welcome() {
   return (
     <Container>
       <Header>
-        <Logo>
-          QUIZ<span>Mania</span>
-        </Logo>
-        {name && <UserName>{name}</UserName>}
+        <LogoSvg />
       </Header>
 
       <WelcomeText>
