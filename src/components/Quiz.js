@@ -82,18 +82,18 @@ const OptionButton = styled.button`
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: space-between;
   margin-top: 2rem;
+  gap: 1rem;
 `;
 
 const NextButton = styled.button`
   background: #c2185b;
   color: white;
-  padding: 0.8rem 2rem;
+  padding: 8px 64px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 24px;
   font-family: "Outfit", sans-serif;
 
 
@@ -113,7 +113,7 @@ const SkipButton = styled.button`
   color: #666;
   cursor: pointer;
   font-size: 1rem;
-  text-decoration: underline;
+  text-decoration: none;
   font-family: "Outfit", sans-serif;
 
 
@@ -188,13 +188,13 @@ export function Quiz() {
         </OptionsContainer>
 
         <ButtonContainer>
-          <SkipButton onClick={handleSkip}>Skip this question</SkipButton>
           <NextButton
             onClick={handleNext}
             disabled={!selectedAnswer && state.timer > 0}
           >
             Next
           </NextButton>
+          <SkipButton onClick={handleSkip}>Skip this question</SkipButton>
         </ButtonContainer>
       </QuestionContainer>
     </>
