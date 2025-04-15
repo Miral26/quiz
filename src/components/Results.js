@@ -9,6 +9,7 @@ const Container = styled.div`
   min-height: 100vh;
   background: #f3f3e9;
   padding: 2rem;
+  text-align: center;
 `;
 
 const Header = styled.div`
@@ -123,7 +124,7 @@ const SuccessScore = styled.div`
 `;
 
 const SuccessSpan = styled.span`
- font-weight: 300;
+  font-weight: 300;
   font-size: 1.875rem;
   color: #373052;
   margin-bottom: 0.5rem;
@@ -144,40 +145,57 @@ const Message = styled.h2`
 `;
 
 const Stats = styled.div`
-  background: #f9f9f9;
+  border: 1px solid #d9d9d9;
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 2rem;
   display: inline-flex;
+  gap: 1.5rem;
+  flex-direction: column;
+`;
+
+const StatsTitle = styled.span`
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #373052;
+`;
+
+const StatsBox = styled.div`
+  display: flex;
   gap: 2rem;
 `;
 
 const StatItem = styled.div`
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
 
   span {
     display: block;
     &:first-child {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       color: ${(props) => props.color};
       font-weight: bold;
       margin-bottom: 0.25rem;
     }
     &:last-child {
       color: #666;
-      font-size: 0.9rem;
+      font-size: 01.25rem;
+      padding-bottom: 0.25rem;
+      font-weight: 400;
     }
   }
 `;
 
 const RetakeButton = styled.button`
-  background: #c2185b;
-  color: white;
+  background: #F3F3E9;
+  color: #c2185b;
   padding: 0.8rem 2rem;
-  border: none;
-  border-radius: 4px;
+  border: 1px solid #c2185b;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.25rem;
 
   &:hover {
     background: #a01346;
@@ -224,22 +242,24 @@ export function Results() {
         <Message>{isSuccess && "Great job!"}</Message>
 
         <Stats>
-          <StatItem color="#4CAF50">
-            <span>{state.score}</span>
-            <span>Correct</span>
-          </StatItem>
-          <StatItem color="#F44336">
-            <span>{totalQuestions - state.score - state.unansweredQuestions}</span>
-            <span>Incorrect</span>
-          </StatItem>
-          <StatItem color="#FF9800">
-            <span>{state.unansweredQuestions}</span>
-            <span>Not answered</span>
-          </StatItem>
+          <StatsTitle>Out of {totalQuestions} question</StatsTitle>
+          <StatsBox>
+            <StatItem color="#4CAF50">
+              <span>{state.score}</span>
+              <span>Correct</span>
+            </StatItem>
+            <StatItem color="#F44336">
+              <span>{totalQuestions - state.score - state.unansweredQuestions}</span>
+              <span>Incorrect</span>
+            </StatItem>
+            <StatItem color="#FF9800">
+              <span>{state.unansweredQuestions}</span>
+              <span>Not answered</span>
+            </StatItem>
+          </StatsBox>
         </Stats>
-
-        <RetakeButton onClick={resetQuiz}>Retake Quiz</RetakeButton>
       </ResultsContainer>
+      <RetakeButton onClick={resetQuiz}>Retake Quiz</RetakeButton>
     </Container>
   );
 }
