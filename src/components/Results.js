@@ -39,6 +39,9 @@ const Title = styled.h1`
   letter-spacing: 1rem;
   text-transform: uppercase;
   margin: 0 auto;
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 const Subtitle = styled.p`

@@ -14,6 +14,7 @@ const AppContainer = styled.div`
 const Container = styled.div`
   max-width: 1440px;
   margin: 0 auto;
+  padding: 20px;
 `;
 
 function AppContent() {

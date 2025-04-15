@@ -12,6 +12,9 @@ export function Header() {
     margin-bottom: 4rem;
     border-bottom: 1px solid #d9d9d9;
     padding: 30px 8%;
+    @media (max-width: 768px) {
+      margin-bottom: 0rem;
+    }
   `;
 
   const UserName = styled.div`
@@ -60,7 +63,9 @@ export function Header() {
           <UserText>{state.userName}</UserText>
         </UserName>
       )}
-      {!state.isQuizComplete && state.selectedCategory && <ExitButton onClick={resetQuiz}>Exit Quiz</ExitButton>}
+      {!state.isQuizComplete && state.selectedCategory && (
+        <ExitButton onClick={resetQuiz}>Exit Quiz</ExitButton>
+      )}
     </HeaderContainer>
   );
 }

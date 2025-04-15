@@ -8,6 +8,11 @@ const WelcomeText = styled.h1`
   margin-bottom: 1rem;
   color: #333;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
+
   span {
     color: #c2185b;
     font-weight: 300;
@@ -48,6 +53,8 @@ const Form = styled.div`
 
 const FormGroup = styled.div`
   margin-bottom: 2rem;
+  max-width: 100%;
+  width: 100%;
 `;
 
 const Label = styled.label`
@@ -63,6 +70,8 @@ const Input = styled.input`
   border-radius: 4px;
   font-size: 1rem;
   background: none;
+  max-width: 100%;
+  box-sizing: border-box;
 `;
 
 const CategoryGrid = styled.div`
@@ -162,6 +171,9 @@ const Modal = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  @media (max-width: 768px) {
+      padding: 20px
+    }
 `;
 
 const ModalContent = styled.div`
