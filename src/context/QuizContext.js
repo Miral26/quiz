@@ -263,6 +263,7 @@ const initialState = {
   unansweredQuestions: 0,
   timer: 10,
   isQuizComplete: false,
+  userName: "",
 };
 
 function quizReducer(state, action) {
@@ -278,6 +279,11 @@ function quizReducer(state, action) {
         unansweredQuestions: 0,
         timer: action.payload.questions[0].timeLimit,
         isQuizComplete: false,
+      };
+    case "SET_USER_NAME":
+      return {
+        ...state,
+        userName: action.payload,
       };
     case "ANSWER_QUESTION":
       const currentQuestion =
@@ -346,6 +352,8 @@ export function QuizProvider({ children }) {
     state,
     selectCategory: (category) =>
       dispatch({ type: "SELECT_CATEGORY", payload: category }),
+    setUserName: (userName) =>
+      dispatch({ type: "SET_USER_NAME", payload: userName }),
     answerQuestion: (answer) =>
       dispatch({ type: "ANSWER_QUESTION", payload: answer }),
     nextQuestion: () => dispatch({ type: "NEXT_QUESTION" }),

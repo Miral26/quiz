@@ -1,40 +1,12 @@
 import React, { useEffect } from "react";
 import { useQuiz } from "../context/QuizContext";
 import styled from "styled-components";
+import { Header } from "./Header";
 
 const Container = styled.div`
   min-height: 100vh;
   background: #fff;
   padding: 2rem;
-`;
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-`;
-
-const Logo = styled.h1`
-  font-size: 1.5rem;
-  color: #000;
-  span {
-    color: #c2185b;
-  }
-`;
-
-const ExitButton = styled.button`
-  background: #fff1f5;
-  color: #c2185b;
-  border: none;
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9rem;
-
-  &:hover {
-    background: #ffe4ec;
-  }
 `;
 
 const Progress = styled.div`
@@ -81,13 +53,6 @@ const QuestionNumber = styled.div`
   font-size: 1.2rem;
   color: #333;
   margin-bottom: 1rem;
-`;
-
-const QuestionText = styled.h2`
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 2rem;
-  line-height: 1.4;
 `;
 
 const OptionsContainer = styled.div`
@@ -158,8 +123,7 @@ const SkipButton = styled.button`
 `;
 
 export function Quiz() {
-  const { state, answerQuestion, nextQuestion, skipQuestion, resetQuiz } =
-    useQuiz();
+  const { state, answerQuestion, nextQuestion, skipQuestion } = useQuiz();
   const currentQuestion =
     state.selectedCategory?.questions[state.currentQuestionIndex];
   const [selectedAnswer, setSelectedAnswer] = React.useState(null);
@@ -191,12 +155,7 @@ export function Quiz() {
 
   return (
     <Container>
-      <Header>
-        <Logo>
-          QUIZ<span>Mania</span>
-        </Logo>
-        <ExitButton onClick={resetQuiz}>Exit Quiz</ExitButton>
-      </Header>
+      <Header />
 
       <Progress>
         <ProgressText>

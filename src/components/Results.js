@@ -4,27 +4,13 @@ import styled from "styled-components";
 import LogoSvg from "../lib/svg/LogoSvg";
 import KeepoSvg from "../lib/svg/KeepSvg";
 import SuccessSvg from "../lib/svg/SuccessSvg ";
+import { Header } from "./Header";
 
 const Container = styled.div`
   min-height: 100vh;
   background: #f3f3e9;
   padding: 2rem;
   text-align: center;
-`;
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 4rem;
-`;
-
-const Logo = styled.h1`
-  font-size: 1.5rem;
-  color: #000;
-  span {
-    color: #c2185b;
-  }
 `;
 
 const UserName = styled.div`
@@ -189,7 +175,7 @@ const StatItem = styled.div`
 `;
 
 const RetakeButton = styled.button`
-  background: #F3F3E9;
+  background: #f3f3e9;
   color: #c2185b;
   padding: 0.8rem 2rem;
   border: 1px solid #c2185b;
@@ -210,27 +196,28 @@ export function Results() {
 
   return (
     <Container>
-      <Header>
-        <LogoSvg />
-        <UserName>
-          <UserAvatar>R</UserAvatar>
-          <UserText>Richard Joe Freds</UserText>
-        </UserName>
-      </Header>
-
+      <Header />
       <ResultsContainer>
-        <ResultIcon success={isSuccess}>{isSuccess ? <SuccessSvg /> : <KeepoSvg />}</ResultIcon>
+        <ResultIcon success={isSuccess}>
+          {isSuccess ? <SuccessSvg /> : <KeepoSvg />}
+        </ResultIcon>
 
-        <MessageText>{!isSuccess && "You successfully completed the Quiz but you need to"}</MessageText>
+        <MessageText>
+          {!isSuccess && "You successfully completed the Quiz but you need to"}
+        </MessageText>
 
         <Title>{isSuccess ? "Congratulation" : "Keep Practicing!"}</Title>
 
-        <Subtitle>{isSuccess && "You successfully completed the Quiz and holds"}</Subtitle>
+        <Subtitle>
+          {isSuccess && "You successfully completed the Quiz and holds"}
+        </Subtitle>
 
         {isSuccess ? (
           <SuccessScore score={percentage}>
             <SuccessSpan>Your Score</SuccessSpan>
-            <ScoreSucces score={percentage}>{percentage.toFixed(0)}%</ScoreSucces>
+            <ScoreSucces score={percentage}>
+              {percentage.toFixed(0)}%
+            </ScoreSucces>
           </SuccessScore>
         ) : (
           <ScoreCircle score={percentage}>
@@ -249,7 +236,9 @@ export function Results() {
               <span>Correct</span>
             </StatItem>
             <StatItem color="#F44336">
-              <span>{totalQuestions - state.score - state.unansweredQuestions}</span>
+              <span>
+                {totalQuestions - state.score - state.unansweredQuestions}
+              </span>
               <span>Incorrect</span>
             </StatItem>
             <StatItem color="#FF9800">

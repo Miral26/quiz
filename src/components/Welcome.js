@@ -1,27 +1,20 @@
 import React, { useState } from "react";
 import { useQuiz } from "../context/QuizContext";
 import styled from "styled-components";
-import LogoSvg from "../lib/svg/LogoSvg";
+import { Header } from "./Header";
 
 const Container = styled.div`
   min-height: 100vh;
-  background: #F3F3E9;
+  background: #f3f3e9;
 `;
 
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #D9D9D9;
-  padding: 2rem;
-`;
-
-const UserName = styled.div`
-  background: #f3e5f5;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-size: 0.9rem;
-`;
+// const Header = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+  
+//   padding: 2rem;
+// `;
 
 const WelcomeText = styled.h1`
   font-size: 2.5rem;
@@ -222,7 +215,7 @@ const RulesList = styled.ul`
 `;
 
 export function Welcome() {
-  const { selectCategory, state } = useQuiz();
+  const { selectCategory, state, setUserName } = useQuiz();
   const [name, setName] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [showRules, setShowRules] = useState(false);
@@ -231,6 +224,7 @@ export function Welcome() {
     const category = state.categories.find((c) => c.id === selectedCategory);
     console.log(category, "category");
     if (category) {
+      setUserName(name);
       setShowRules(true);
     }
   };
@@ -245,9 +239,7 @@ export function Welcome() {
 
   return (
     <Container>
-      <Header>
-        <LogoSvg />
-      </Header>
+      <Header />
 
       <WelcomeText>
         Welcome to <span>QUIZMania</span>
