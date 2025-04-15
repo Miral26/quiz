@@ -11,8 +11,10 @@ export function Header() {
     align-items: center;
     margin-bottom: 4rem;
     border-bottom: 1px solid #d9d9d9;
-    padding: 30px;
+    padding: 30px 8%;
   `;
+
+  
   const UserName = styled.div`
     display: flex;
     align-items: center;

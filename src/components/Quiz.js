@@ -1,13 +1,7 @@
 import React, { useEffect } from "react";
 import { useQuiz } from "../context/QuizContext";
 import styled from "styled-components";
-import { Header } from "./Header";
 
-const Container = styled.div`
-  min-height: 100vh;
-  background: #fff;
-  padding: 2rem;
-`;
 
 const Progress = styled.div`
   margin-bottom: 2rem;
@@ -154,8 +148,7 @@ export function Quiz() {
     100;
 
   return (
-    <Container>
-      <Header />
+    <>
 
       <Progress>
         <ProgressText>
@@ -198,6 +191,6 @@ export function Quiz() {
           </NextButton>
         </ButtonContainer>
       </QuestionContainer>
-    </Container>
+    </>
   );
 }

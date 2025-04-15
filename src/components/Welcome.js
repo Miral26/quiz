@@ -1,20 +1,6 @@
 import React, { useState } from "react";
 import { useQuiz } from "../context/QuizContext";
 import styled from "styled-components";
-import { Header } from "./Header";
-
-const Container = styled.div`
-  min-height: 100vh;
-  background: #f3f3e9;
-`;
-
-// const Header = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-  
-//   padding: 2rem;
-// `;
 
 const WelcomeText = styled.h1`
   font-size: 2.5rem;
@@ -247,8 +233,8 @@ export function Welcome() {
   };
 
   return (
-    <Container>
-      <Header />
+    <>
+      
 
       <WelcomeText>
         Welcome to <span>QUIZMania</span>
@@ -353,6 +339,6 @@ export function Welcome() {
           </ModalContent>
         </Modal>
       )}
-    </Container>
+    </>
   );
 }

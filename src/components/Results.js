@@ -1,39 +1,8 @@
 import React from "react";
 import { useQuiz } from "../context/QuizContext";
 import styled from "styled-components";
-import LogoSvg from "../lib/svg/LogoSvg";
 import KeepoSvg from "../lib/svg/KeepSvg";
 import SuccessSvg from "../lib/svg/SuccessSvg ";
-import { Header } from "./Header";
-
-const Container = styled.div`
-  min-height: 100vh;
-  background: #f3f3e9;
-  padding: 2rem;
-  text-align: center;
-`;
-
-const UserName = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-`;
-
-const UserAvatar = styled.div`
-  width: 32px;
-  height: 32px;
-  background: #c2185b;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-`;
-
-const UserText = styled.span`
-  color: #333;
-`;
 
 const ResultsContainer = styled.div`
   max-width: 600px;
@@ -191,8 +160,7 @@ export function Results() {
   const isSuccess = percentage >= 60;
 
   return (
-    <Container>
-      <Header />
+    <>
       <ResultsContainer>
         <ResultIcon success={isSuccess}>
           {isSuccess ? <SuccessSvg /> : <KeepoSvg />}
@@ -245,6 +213,6 @@ export function Results() {
         </Stats>
       </ResultsContainer>
       <RetakeButton onClick={resetQuiz}>Retake Quiz</RetakeButton>
-    </Container>
+    </>
   );
 }

@@ -3,7 +3,6 @@ body {
   font-family: "Outfit", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width: 1440px;
   margin: 0 auto;
   background-color: #F3F3E9;
 }
